@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidate Data Transformer Dashboard</title>
+    <!-- Google Fonts: Plus Jakarta Sans for premium modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS Styles -->
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="dark-theme">
+    <div class="glass-bg"></div>
+    
+    <div class="app-container">
+        <!-- Main Sidebar/Navigation -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-logo">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+                <div class="brand-text">
+                    <h1>Eightfold</h1>
+                    <span>Transformer</span>
+                </div>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="#" class="nav-item active" id="btn-nav-dashboard"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
+                <a href="#" class="nav-item" id="btn-nav-schema"><i class="fa-solid fa-sliders"></i> Schema Config</a>
+                <a href="#" class="nav-item" id="btn-nav-files"><i class="fa-solid fa-folder-open"></i> Uploaded Files</a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="theme-toggle" id="theme-toggle-btn">
+                    <i class="fa-solid fa-moon"></i>
+                    <span>Dark Mode</span>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Header -->
+            <header class="content-header">
+                <div class="header-title-area">
+                    <h2>Candidate Data Processing Sandbox</h2>
+                    <p>Ingest CSVs, ATS JSON, recruiter notes, and resume PDFs to form a clean canonical profile.</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-secondary" id="btn-reset-data"><i class="fa-solid fa-rotate-left"></i> Reset to Samples</button>
+                    <button class="btn btn-primary" id="btn-run-pipeline"><i class="fa-solid fa-play"></i> Run Transformer</button>
+                </div>
+            </header>
+            
+            <!-- Dashboard View -->
+            <div class="view-tab" id="view-dashboard">
+                <!-- Metrics Panel -->
+                <section class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-icon blue"><i class="fa-solid fa-file-invoice"></i></div>
+                        <div class="metric-details">
+                            <span class="metric-label">Sources Ingested</span>
+                            <h3 class="metric-value" id="metric-sources">0 / 0</h3>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon purple"><i class="fa-solid fa-users"></i></div>
+                        <div class="metric-details">
+                            <span class="metric-label">Candidates Merged</span>
+                            <h3 class="metric-value" id="metric-candidates">0</h3>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon green"><i class="fa-solid fa-shield-halved"></i></div>
+                        <div class="metric-details">
+                            <span class="metric-label">Avg Profile Trust</span>
+                            <h3 class="metric-value" id="metric-trust">0%</h3>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon red"><i class="fa-solid fa-circle-exclamation"></i></div>
+                        <div class="metric-details">
+                            <span class="metric-label">Errors / Warnings</span>
+                            <h3 class="metric-value" id="metric-errors">0</h3>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Main Workspace Grid -->
+                <div class="workspace-grid">
+                    <!-- Left Pane: Candidates list -->
+                    <section class="panel list-panel">
+                        <div class="panel-header">
+                            <div class="search-box">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="text" id="candidate-search" placeholder="Search profiles, skills, locations...">
+                            </div>
+                        </div>
+                        <div class="candidates-list-container">
+                            <div class="candidates-list" id="candidates-list-items">
+                                <div class="empty-state">
+                                    <i class="fa-solid fa-play"></i>
+                                    <p>Run the transformer to load profiles.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Right Pane: Details or Empty State -->
+                    <section class="panel details-panel" id="candidate-details-pane">
+                        <div class="empty-state" id="details-empty-state">
+                            <i class="fa-solid fa-address-card"></i>
+                            <h3>Select a Candidate Profile</h3>
+                            <p>Choose a candidate from the list to audit extraction provenance, merge history, and active overrides.</p>
+                        </div>
+                        
+                        <!-- Candidate Profile Content (Hidden by default) -->
+                        <div class="profile-details-content hidden" id="profile-content">
+                            <!-- Header Card -->
+                            <div class="profile-header-card">
+                                <div class="profile-avatar" id="prof-avatar">JD</div>
+                                <div class="profile-meta">
+                                    <div class="meta-row">
+                                        <h3 id="prof-name">John Doe</h3>
+                                        <div class="trust-badge" id="prof-trust-badge">
+                                            <i class="fa-solid fa-shield-halved"></i> <span id="prof-trust-score">95%</span>
+                                        </div>
+                                    </div>
+                                    <p class="profile-headline" id="prof-headline">Senior Software Engineer</p>
+                                    <p class="profile-location" id="prof-location"><i class="fa-solid fa-location-dot"></i> <span>San Francisco, CA</span></p>
+                                </div>
+                            </div>
+                            
+                            <!-- Links Section -->
+                            <div class="profile-links-row" id="prof-links">
+                                <!-- Generated dynamically -->
+                            </div>
+                            
+                            <!-- Tab Bar -->
+                            <div class="profile-tabs">
+                                <button class="profile-tab active" data-tab="tab-experience">Experience & Education</button>
+                                <button class="profile-tab" data-tab="tab-skills">Skills & Core Details</button>
+                                <button class="profile-tab" data-tab="tab-provenance">Audit Provenance</button>
+                                <button class="profile-tab" data-tab="tab-linkage">Linkage Map</button>
+                            </div>
+                            
+                            <!-- Tab Contents -->
+                            <div class="tab-contents">
+                                <!-- Experience & Education Tab -->
+                                <div class="tab-pane active" id="tab-experience">
+                                    <div class="section-title">Professional Experience</div>
+                                    <div class="timeline" id="prof-timeline-experience">
+                                        <!-- Timeline items -->
+                                    </div>
+                                    
+                                    <div class="section-title">Education</div>
+                                    <div class="education-grid" id="prof-grid-education">
+                                        <!-- Education items -->
+                                    </div>
+                                </div>
+                                
+                                <!-- Skills Tab -->
+                                <div class="tab-pane" id="tab-skills">
+                                    <div class="section-title">Extracted Skills</div>
+                                    <div class="skills-wrap" id="prof-skills-container">
+                                        <!-- Skills tags -->
+                                    </div>
+                                    
+                                    <div class="section-title">Verified Contact Details</div>
+                                    <div class="contact-details-grid">
+                                        <div class="contact-card">
+                                            <span class="card-label">Primary Emails</span>
+                                            <ul id="prof-emails-list"></ul>
+                                        </div>
+                                        <div class="contact-card">
+                                            <span class="card-label">Phone Numbers</span>
+                                            <ul id="prof-phones-list"></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Provenance Audit Tab -->
+                                <div class="tab-pane" id="tab-provenance">
+                                    <div class="alert alert-info">
+                                        <i class="fa-solid fa-circle-info"></i>
+                                        <div>
+                                            <strong>Conflict Resolution Traceability</strong>
+                                            <p>This table lists which source was selected as the ground truth for each profile field, based on weighted trust scores and temporal overrides.</p>
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="provenance-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Field Path</th>
+                                                    <th>Final Value</th>
+                                                    <th>Source Win</th>
+                                                    <th>Method</th>
+                                                    <th>Trust Score</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="prof-provenance-tbody">
+                                                <!-- Provenance rows -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                
+                                <!-- Linkage Map Tab -->
+                                <div class="tab-pane" id="tab-linkage">
+                                    <div class="section-title">Identity Graph Linkage</div>
+                                    <p class="section-subtitle">Below is a visual layout showing which uploaded source records matched and merged into this canonical identity cluster.</p>
+                                    <div class="linkage-graph-container">
+                                        <div class="linkage-center-node">
+                                            <i class="fa-solid fa-address-card"></i>
+                                            <span id="linkage-center-name">Canonical Profile</span>
+                                        </div>
+                                        <div class="linkage-sources-wrapper" id="linkage-sources-list">
+                                            <!-- Connected files list -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            
+            <!-- Schema Config View -->
+            <div class="view-tab hidden" id="view-schema">
+                <div class="schema-layout">
+                    <!-- Config Controls -->
+                    <section class="panel schema-editor-panel">
+                        <div class="panel-header">
+                            <h3><i class="fa-solid fa-sliders"></i> Schema Projection Configuration</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form id="schema-config-form">
+                                <div class="section-title">Fields Selector</div>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" id="schema-field-name" checked>
+                                        <span>Candidate Full Name</span>
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" id="schema-field-emails" checked>
+                                        <span>Emails</span>
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" id="schema-field-phones" checked>
+                                        <span>Phones</span>
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" id="schema-field-location" checked>
+                                        <span>Location Details</span>
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" id="schema-field-links" checked>
+                                        <span>URLs & Links</span>
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" id="schema-field-skills" checked>
+                                        <span>Skills Array</span>
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" id="schema-field-experience" checked>
+                                        <span>Experience Details</span>
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" id="schema-field-education" checked>
+                                        <span>Education Details</span>
+                                    </label>
+                                </div>
+                                
+                                <div class="section-title">Key Field Remappings</div>
+                                <div class="mapping-rows">
+                                    <div class="form-group">
+                                        <label for="map-name">Remap "full_name" to:</label>
+                                        <input type="text" id="map-name" value="name" placeholder="name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="map-email">Remap "emails[0]" to:</label>
+                                        <input type="text" id="map-email" value="primary_email" placeholder="primary_email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="map-phone">Remap "phones[0]" to:</label>
+                                        <input type="text" id="map-phone" value="primary_phone" placeholder="primary_phone">
+                                    </div>
+                                </div>
+                                
+                                <div class="section-title">Schema Validation Policy</div>
+                                <div class="form-group">
+                                    <label for="policy-missing">Missing Value Policy:</label>
+                                    <select id="policy-missing">
+                                        <option value="omit">Omit Field (Cleaner Output)</option>
+                                        <option value="null" selected>Return Null (Preserve Structure)</option>
+                                        <option value="error">Raise Error (Strict Schema)</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="schema-form-actions">
+                                    <button type="button" class="btn btn-primary btn-block" id="btn-apply-schema">
+                                        <i class="fa-solid fa-wand-magic-sparkles"></i> Apply Custom Projection Schema
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                    
+                    <!-- Output JSON View -->
+                    <section class="panel schema-output-panel">
+                        <div class="panel-header">
+                            <h3><i class="fa-solid fa-code"></i> Projected JSON Output</h3>
+                            <button class="btn btn-small" id="btn-copy-json"><i class="fa-solid fa-copy"></i> Copy JSON</button>
+                        </div>
+                        <div class="panel-body code-body">
+                            <pre><code id="schema-json-output">// Apply configuration and run to view projected JSON...</code></pre>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            
+            <!-- Uploaded Files View -->
+            <div class="view-tab hidden" id="view-files">
+                <!-- Dropzone Section -->
+                <section class="panel upload-panel">
+                    <div class="panel-body">
+                        <div class="dropzone" id="file-dropzone">
+                            <i class="fa-solid fa-cloud-arrow-up dropzone-icon"></i>
+                            <h3>Drag & Drop Recruitment Files</h3>
+                            <p>Supports recruiter.csv, ats.json, recruiter notes (.txt), and candidate resumes (.pdf)</p>
+                            <input type="file" id="file-input-hidden" multiple class="hidden" accept=".csv,.json,.txt,.pdf">
+                            <button class="btn btn-secondary" id="btn-select-files">Browse Files</button>
+                        </div>
+                        <div class="upload-progress-list" id="upload-progress-container"></div>
+                    </div>
+                </section>
+                
+                <!-- Ingested Files List -->
+                <section class="panel files-list-panel">
+                    <div class="panel-header">
+                        <h3><i class="fa-solid fa-list-check"></i> Files in Sandboxed Input Directory</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="files-columns">
+                            <!-- CSV column -->
+                            <div class="file-category-card">
+                                <h4><i class="fa-solid fa-table"></i> Structured CSVs</h4>
+                                <ul class="file-list-ul" id="file-list-csv">
+                                    <!-- Dynamic -->
+                                </ul>
+                            </div>
+                            
+                            <!-- JSON column -->
+                            <div class="file-category-card">
+                                <h4><i class="fa-solid fa-file-code"></i> ATS JSONs</h4>
+                                <ul class="file-list-ul" id="file-list-json">
+                                    <!-- Dynamic -->
+                                </ul>
+                            </div>
+                            
+                            <!-- Notes column -->
+                            <div class="file-category-card">
+                                <h4><i class="fa-solid fa-file-lines"></i> Recruiter Notes</h4>
+                                <ul class="file-list-ul" id="file-list-notes">
+                                    <!-- Dynamic -->
+                                </ul>
+                            </div>
+                            
+                            <!-- Resumes column -->
+                            <div class="file-category-card">
+                                <h4><i class="fa-solid fa-file-pdf"></i> Resumes (PDF)</h4>
+                                <ul class="file-list-ul" id="file-list-resumes">
+                                    <!-- Dynamic -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Toast notifications -->
+    <div class="toast-container" id="toast-container"></div>
+    
+    <!-- Custom JavaScript -->
+    <script src="/app.js"></script>
+</body>
+</html>
