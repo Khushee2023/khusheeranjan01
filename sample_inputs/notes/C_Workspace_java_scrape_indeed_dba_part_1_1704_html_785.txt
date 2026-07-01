@@ -1,0 +1,5 @@
+Candidate ref: C:\Workspace\java\scrape_indeed\dba_part_1\1704.html#785
+Spoke with Sarah Mueller re: Full Stack Developer.
+Heads up - candidate mentioned they recently left Sanchez and Sons and are no longer there, but didn't confirm the new employer yet. Don't rely on the resume's company field.
+Strong on: Full Stack Developer, Lead Front End Developer, Front End Developer (Contract), Web Contractor, Executive Editor, Project Manager.
+Will follow up next week after references.

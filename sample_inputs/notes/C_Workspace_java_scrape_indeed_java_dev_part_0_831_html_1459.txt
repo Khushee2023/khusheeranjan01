@@ -1,0 +1,5 @@
+Candidate ref: C:\Workspace\java\scrape_indeed\java_dev_part_0\831.html#14595
+Spoke with Mary Parker re: Hadoop/spark Developer.
+Currently at BCBSA, based in Chicago, IL.
+Strong on: spark Developer, Hadoop Developer, Java Developer, APACHE HADOOP HDFS (2 years), database (2 years), Eclipse (2 years).
+Seems like a solid fit, moving to next round.

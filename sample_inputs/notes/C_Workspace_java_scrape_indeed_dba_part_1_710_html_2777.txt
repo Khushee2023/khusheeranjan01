@@ -1,0 +1,5 @@
+Candidate ref: C:\Workspace\java\scrape_indeed\dba_part_1\710.html#2777
+Spoke with Taylor Vargas re: Database Administrator.
+Currently at Smith, Bullock and Wall, based in Highland, MD.
+Strong on: Database Administrator, MYSQL.
+Good communication, slightly light on recent hands-on experience.

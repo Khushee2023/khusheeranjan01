@@ -1,0 +1,5 @@
+Candidate ref: C:\Workspace\java\scrape_indeed\soft_dav_part_1\1299.html#21116
+Spoke with Paul Finley re: Software Development Engineer.
+Currently at Paychex, based in Rochester, NY.
+Strong on: software developer at Zurich Insurance, DATABASE (5 years), PL/SQL (5 years), Java (5 years), XML (2 years), Json (2 years).
+Good communication, slightly light on recent hands-on experience.

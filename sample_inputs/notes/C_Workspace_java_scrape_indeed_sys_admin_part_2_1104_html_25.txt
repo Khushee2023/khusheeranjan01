@@ -1,0 +1,5 @@
+Candidate ref: C:\Workspace\java\scrape_indeed\sys_admin_part_2\1104.html#25006
+Spoke with David Dixon re: DevOps Engineer.
+Currently at Ideabakr,, based in INC New Carrollton, MD.
+Strong on: UNIX/Linux Systems Administrator, DEVOPS, LINUX, Jenkins, Git, Bash.
+Salary expectations TBD, asked recruiter to confirm range.
