@@ -18,6 +18,8 @@ Ingests **ATS JSON, Recruiter CSV, PDF Résumés, and Recruiter Notes** → reso
 
 🌐 **Live Demo:** [khusheeranjan01-1.onrender.com](https://khusheeranjan01-1.onrender.com) &nbsp;|&nbsp; 🎬 **Demo Video:** [Watch on Google Drive](https://drive.google.com/file/d/1L0PEq3vF4KCthBHRaOmiuwZM5UUWV083/view?usp=drive_link)
 
+![Deployed Screenshot](assets/Screenshot.png)
+
 </div>
 
 ---
