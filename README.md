@@ -15,7 +15,7 @@
 Ingests **ATS JSON, Recruiter CSV, PDF Résumés, and Recruiter Notes** → resolves identity across sources → merges conflicts via a trust-weighted authority matrix → outputs a Pydantic-validated canonical JSON record with a full provenance audit trail.
 
 <br />
-
+**Technical Design:** [Technical Design PDF](https://drive.google.com/file/d/1Jx7H3I_obRolw1JVmtMBH75aqO5dbDGE)
 🌐 **Live Demo:** [khusheeranjan01-1.onrender.com](https://khusheeranjan01-1.onrender.com) &nbsp;|&nbsp; 🎬 **Demo Video:** [Watch on Google Drive](https://drive.google.com/file/d/1L0PEq3vF4KCthBHRaOmiuwZM5UUWV083/view?usp=drive_link)
 
 
