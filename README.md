@@ -16,15 +16,22 @@ Ingests **ATS JSON, Recruiter CSV, PDF Résumés, and Recruiter Notes** → reso
 
 <br>
 
-<b>Resources</b>
+<div align="center">
 
-<a href="https://drive.google.com/file/d/1Jx7H3I_obRolw1JVmtMBH75aqO5dbDGE">Technical Design</a>
-&nbsp;&nbsp;•&nbsp;&nbsp;
-<a href="https://khusheeranjan01-1.onrender.com">Live Demo</a>
-&nbsp;&nbsp;•&nbsp;&nbsp;
-<a href="https://drive.google.com/file/d/1L0PEq3vF4KCthBHRaOmiuwZM5UUWV083/view?usp=drive_link">Demo Video</a>
+<strong>Live Demo</strong><br>
+<a href="https://khusheeranjan01-1.onrender.com">https://khusheeranjan01-1.onrender.com</a>
 
 <br><br>
+
+<strong>Demo Video</strong><br>
+<a href="https://drive.google.com/file/d/1L0PEq3vF4KCthBHRaOmiuwZM5UUWV083/view?usp=drive_link">Watch Video</a>
+
+<br><br>
+
+<strong>Technical Design</strong><br>
+<a href="https://drive.google.com/file/d/1Jx7H3I_obRolw1JVmtMBH75aqO5dbDGE">Read PDF</a>
+
+</div><br>
 
 <img src="Screenshot.png" alt="Application Screenshot" width="900"/>
 
