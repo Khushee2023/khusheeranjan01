@@ -10,7 +10,7 @@
 
 # Multi-Source Candidate Data Transformer
 
-### *Deterministic DAG pipeline — from multi-source chaos to canonical candidate records.*
+### *Deterministic DAG pipeline - from multi-source chaos to canonical candidate records.*
 
 Ingests **ATS JSON, Recruiter CSV, PDF Résumés, and Recruiter Notes** → resolves identity across sources → merges conflicts via a trust-weighted authority matrix → outputs a Pydantic-validated canonical JSON record with a full provenance audit trail.
 
