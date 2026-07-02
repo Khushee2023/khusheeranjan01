@@ -6,32 +6,31 @@
 <img src="https://img.shields.io/badge/FastAPI-REST_API-009688?style=for-the-badge&logo=fastapi&logoColor=white" />
 <img src="https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge" />
 
-<br /><br />
+<br><br>
 
 # Multi-Source Candidate Data Transformer
 
-### *Deterministic DAG pipeline - from multi-source chaos to canonical candidate records.*
+### *Deterministic DAG pipeline — from multi-source chaos to canonical candidate records.*
 
 Ingests **ATS JSON, Recruiter CSV, PDF Résumés, and Recruiter Notes** → resolves identity across sources → merges conflicts via a trust-weighted authority matrix → outputs a Pydantic-validated canonical JSON record with a full provenance audit trail.
 
 <br>
 
-<div align="center">
+<!-- RESOURCE BADGES -->
 
-<strong>Live Demo</strong><br>
-<a href="https://khusheeranjan01-1.onrender.com">https://khusheeranjan01-1.onrender.com</a>
+<a href="https://khusheeranjan01-1.onrender.com">
+  <img src="https://img.shields.io/badge/LIVE-DEMO-2563EB?style=for-the-badge" />
+</a>
+
+<a href="https://drive.google.com/file/d/1L0PEq3vF4KCthBHRaOmiuwZM5UUWV083/view?usp=drive_link">
+  <img src="https://img.shields.io/badge/DEMO-VIDEO-DC2626?style=for-the-badge" />
+</a>
+
+<a href="https://drive.google.com/file/d/1Jx7H3I_obRolw1JVmtMBH75aqO5dbDGE">
+  <img src="https://img.shields.io/badge/TECHNICAL-DESIGN-16A34A?style=for-the-badge" />
+</a>
 
 <br><br>
-
-<strong>Demo Video</strong><br>
-<a href="https://drive.google.com/file/d/1L0PEq3vF4KCthBHRaOmiuwZM5UUWV083/view?usp=drive_link">Watch Video</a>
-
-<br><br>
-
-<strong>Technical Design</strong><br>
-<a href="https://drive.google.com/file/d/1Jx7H3I_obRolw1JVmtMBH75aqO5dbDGE">Read PDF</a>
-
-</div><br>
 
 <img src="Screenshot.png" alt="Application Screenshot" width="900"/>
 
