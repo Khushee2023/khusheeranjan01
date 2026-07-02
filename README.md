@@ -29,7 +29,7 @@ Ingests **ATS JSON, Recruiter CSV, PDF Résumés, and Recruiter Notes** → reso
 ## Quick Start
 
 ```bash
-git clone https://github.com/<your-username>/eightfold-transformer
+git clone https://github.com/Khushee2023/khusheeranjan01
 cd eightfold-transformer
 pip install -r requirements.txt
 ```
